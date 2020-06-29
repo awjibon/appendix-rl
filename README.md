@@ -14,7 +14,7 @@ An agent initialized at a random point inside a 3D medical image, moves to a nei
 
 **Parameters**
 
-`-volume_path` : `"*/*.mat"`: this mat is formatted as follows: `{'vol': 3D array, 'gt':[[x,y,z]]}`. During test, a fake GT can be provided
+`-dicompath` : `"path/to/dicom/folder"`
 
 `-network_path` : `"path/to/net"` : (default: `"net/policy_best"`)
 
