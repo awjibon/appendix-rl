@@ -10,23 +10,17 @@ An agent initialized at a random point inside a 3D medical image, moves to a nei
 ## Usage
 **Example**
 
-`appx_rl.py -dicompath "path/to/dicom/folder" -network_path "net/policy1"`
+`appx_rl.py -dicompath "path/to/dicom/folder"`
 
 **Parameters**
 
 `-dicompath` : `"path/to/dicom/folder"`
 
-`-network_path` : `"path/to/net"` : (default: `"net/policy_best"`)
-
-`-init_pos_center`: Center of the sample space for the random initial position. (default: center of the input volume)
-
-`-init_pos_radii`: Radii of the sample space for the random initial position. (default: `5`). Use `0`, for exactly using the center constantly, as the initial position.
-
-`-init_pos_radii_multiplier`: To extend the radii but with stride. (default: `1` for zero stride)
+`-policy_path` : `"path/to/net"` : (default: `"net"`)
 
 `-max_episode`: number of episodes to explore at each epoch. (default: `5`)
 
-`-max_step`: maximum number of steps per episode. (default: `50`). Keep in mind, the step-size is `2` in the current code.
+`-max_step`: maximum number of steps per episode. (default: `10`). Keep in mind, the step-size is `2` in the current code.
 
 
 
