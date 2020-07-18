@@ -369,8 +369,8 @@ def localize_appendix(max_episode=5, max_step=10, epsilon=0.9, policy_path='net'
     init_pos = ipmodel.predict(world.vol[np.newaxis, ..., np.newaxis])
     init_pos = np.int32(init_pos + 0.5)
     init_pos = init_pos[0]
-    print('init_pos:', init_pos)
-
+    
+    print('performing agent-walk...')
     agent = Agent(policy_path+'/pi1/pi_global_best7')
 
     C_init_pos_center = init_pos
@@ -391,9 +391,9 @@ def localize_appendix(max_episode=5, max_step=10, epsilon=0.9, policy_path='net'
                 mean_pt_array[e] = np.mean(np.array(pt[e])[(step[e] - 3) * 3:(step[e] - 1) * 3, ], axis=0)
         walk_var = np.mean(walk_var_array[long_enough_episode])
         mean_pt = np.mean(mean_pt_array[long_enough_episode], axis=0)
-        for i in range(len(mean_pt_array[long_enough_episode])):
-            print(mean_pt_array[i], walk_var_array[i])
-        print(mean_pt)
+        #for i in range(len(mean_pt_array[long_enough_episode])):
+        #    print(mean_pt_array[i], walk_var_array[i])
+        #print(mean_pt)
         #C_init_pos_center = np.int32(mean_pt * 1.0 + 0.5)
         # next scale
 
@@ -410,11 +410,11 @@ def draw_result(pos, pos_rescaled):
     plt.subplot(2, 3, 1)
     plt.imshow(np.squeeze(world.vol[pos[0], :, :]).T, cmap='gray')
     plt.plot(pos[1], pos[2], '+', color='red')
-    plt.xlabel('X-view')
+    plt.xlabel('Y-view')
     plt.subplot(2, 3, 2)
     plt.imshow(np.squeeze(world.vol[:, pos[1], :]).T, cmap='gray')
     plt.plot(pos[0], pos[2], '+', color='red')
-    plt.xlabel('Y-view')
+    plt.xlabel('X-view')
     plt.subplot(2, 3, 3)
     plt.imshow(np.squeeze(world.vol[:, :, pos[2]]), cmap='gray')
     plt.plot(pos[1], pos[0], '+', color='red')
@@ -424,11 +424,11 @@ def draw_result(pos, pos_rescaled):
     plt.subplot(2, 3, 4)
     plt.imshow(np.squeeze(world.vol[pos[0], :, :]).T, cmap='gray')
     plt.plot(pos[1], pos[2], '+', color='red')
-    plt.xlabel('X-view (rescaled)')
+    plt.xlabel('Y-view (rescaled)')
     plt.subplot(2, 3, 5)
     plt.imshow(np.squeeze(world.vol[:, pos[1], :]).T, cmap='gray')
     plt.plot(pos[0], pos[2], '+', color='red')
-    plt.xlabel('Y-view (rescaled)')
+    plt.xlabel('X-view (rescaled)')
     plt.subplot(2, 3, 6)
     plt.imshow(np.squeeze(world.vol[:, :, pos[2]]), cmap='gray')
     plt.plot(pos[1], pos[0], '+', color='red')
@@ -483,7 +483,6 @@ if __name__ == '__main__':
     pos = pos*350.0/world.vol.shape
     pos = C_crop_start + pos - C_pad
     pos = np.int32(pos+0.5)
-    #world.set_volume(C_vol)
     print('estimated appendix position:', pos_original, 'rescaled_to_original:', pos)
     draw_result(pos_original, pos)
 
