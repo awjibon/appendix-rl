@@ -1,0 +1,4 @@
+model_checkpoint_path: "pi_global_temp"
+all_model_checkpoint_paths: "pi_global_best7"
+all_model_checkpoint_paths: "pi_global_best3"
+all_model_checkpoint_paths: "pi_global_temp"
