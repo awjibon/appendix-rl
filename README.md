@@ -10,11 +10,11 @@ An agent initialized at a random point inside a 3D medical image, moves to a nei
 ## Usage
 **Example**
 
-`appx_rl.py -dicompath "path/to/dicom/folder"`
+`appx_rl.py -dicom_path "path/to/dicom/folder"`
 
 **Parameters**
 
-`-dicompath` : `"path/to/dicom/folder"`
+`-dicom_path` : `"path/to/dicom/folder"`
 
 `-policy_path` : `"path/to/net"` : (default: `"net"`)
 
