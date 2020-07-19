@@ -18,7 +18,7 @@ An agent initialized at a random point inside a 3D medical image, moves to a nei
 
 `-policy_path` : `"path/to/net"` : (default: `"net"`)
 
-`-max_episode`: number of episodes to explore at each epoch. (default: `5`)
+`-max_episode`: number of episodes to explore. (default: `5`)
 
 `-max_step`: maximum number of steps per episode. (default: `10`). Note that, the step-size is `2` in the current code.
 
